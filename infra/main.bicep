@@ -8,7 +8,6 @@ param location string = 'swedencentral'
 param appServiceSku string = 'B3'
 
 @description('Global names – do not change after first deploy')
-var resourceGroupName        = 'pippaoflondon-rg'
 var appServicePlanName       = 'pippaoflondon-plan'
 var webAppName               = 'pippaoflondonai'
 var storageAccountName       = 'pippaoflondonstore'
@@ -68,7 +67,7 @@ resource cosmos 'Microsoft.DocumentDB/databaseAccounts@2023-04-15' = {
       {
         locationName: location
         failoverPriority: 0
-        zoneRedundant: false
+        isZoneRedundant: false
       }
     ]
     databaseAccountOfferType: 'Standard'
@@ -110,17 +109,24 @@ resource aoai 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
   sku: { name: 'S0' }
   properties: {
     customSubDomainName: openAIName
-    encryption: { status: 'Enabled' }
+    encryption: {
+      keySource: 'Microsoft.Keyvault'
+      keyVaultProperties: {
+        keyName: 'myKey'
+        keyVersion: '1'
+        keyVaultUri: 'https://myvault.vault.azure.net/'
+      }
+    }
   }
 }
 
 // model deployments
 var models = [
-  { name: 'gpt4o'              sku: 'gpt-4o'                        }
-  { name: 'gpt41'              sku: 'gpt-4.1'                      }
-  { name: 'o3-mini'            sku: 'o3-mini'                      }
-  { name: 'dalle3'             sku: 'dalle3'                       }
-  { name: 'whisper'            sku: 'whisper'                      }
+  { name: 'gpt4o', sku: 'gpt-4o' },
+  { name: 'gpt41', sku: 'gpt-4.1' },
+  { name: 'o3-mini', sku: 'o3-mini' },
+  { name: 'dalle3', sku: 'dalle3' },
+  { name: 'whisper', sku: 'whisper' }
 ]
 
 resource deployments 'Microsoft.CognitiveServices/accounts/deployments@2023-10-01' = [for m in models: {
@@ -181,18 +187,16 @@ resource web 'Microsoft.Web/sites@2023-01-01' = {
     siteConfig: {
       linuxFxVersion: 'PYTHON|3.11'
       appSettings: [
-        { name: 'AZURE_OPENAI_ENDPOINT'          value: aoai.properties.endpoint }
-        { name: 'AOAI_MODEL_GPT4O_DEPLOYMENT'    value: 'gpt4o' }
-        { name: 'AOAI_MODEL_GPT41_DEPLOYMENT'    value: 'gpt41' }
-        { name: 'AOAI_MODEL_O3MINI_DEPLOYMENT'   value: 'o3-mini' }
-        { name: 'AOAI_MODEL_DALLE_DEPLOYMENT'    value: 'dalle3' }
-        { name: 'AOAI_MODEL_WHISPER_DEPLOYMENT'  value: 'whisper' }
-        { name: 'AZUREAI_SEARCH_ENDPOINT'        value: 'https://${search.name}.search.windows.net' }
-        { name: 'AZUREAI_SEARCH_KEY'             value: listAdminKeys(search.id, '2023-11-01').primaryKey }
-        { name: 'COSMOS_CONNECTION_STRING'       value: listKeys(cosmos.id, '2023-04-15').primaryMasterKey }
-        { name: 'STORAGE_CONNECTION_STRING'      value: listKeys(sa.id, '2023-01-01').keys[0].value }
-        { name: 'BING_GROUNDING_ENDPOINT'        value: kv.getSecret('bing-endpoint') }
-        { name: 'BING_GROUNDING_KEY'             value: kv.getSecret('bing-key') }
+        { name: 'AZURE_OPENAI_ENDPOINT', value: aoai.properties.endpoint }
+        { name: 'AOAI_MODEL_GPT4O_DEPLOYMENT', value: 'gpt4o' }
+        { name: 'AOAI_MODEL_GPT41_DEPLOYMENT', value: 'gpt41' }
+        { name: 'AOAI_MODEL_O3MINI_DEPLOYMENT', value: 'o3-mini' }
+        { name: 'AOAI_MODEL_DALLE_DEPLOYMENT', value: 'dalle3' }
+        { name: 'AOAI_MODEL_WHISPER_DEPLOYMENT', value: 'whisper' }
+        { name: 'AZUREAI_SEARCH_ENDPOINT', value: 'https://${search.name}.search.windows.net' }
+        { name: 'AZUREAI_SEARCH_KEY', value: search.listAdminKeys().primaryKey }
+        { name: 'COSMOS_CONNECTION_STRING', value: cosmos.listKeys().primaryMasterKey }
+        { name: 'STORAGE_CONNECTION_STRING', value: sa.listKeys().keys[0].value }
       ]
     }
   }
@@ -200,9 +204,9 @@ resource web 'Microsoft.Web/sites@2023-01-01' = {
 
 // staging slot
 resource slot 'Microsoft.Web/sites/slots@2023-01-01' = {
-  name: '${webAppName}/staging'
+  parent: web
+  name: 'staging'
   location: location
-  kind: 'app,linux'
   properties: {
     serverFarmId: plan.id
   }

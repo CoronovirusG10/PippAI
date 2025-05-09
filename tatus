@@ -1,0 +1,188 @@
+[33m21f32e8[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Add infrastructure and CI/CD workflow
+[33mcfd3243[m Merge pull request #159 from microsoft/Development
+[33m5e0283b[m Updated latest release
+[33m38890f7[m Merge pull request #150 from microsoft/actions-main-5-6-25
+[33m3500d44[m Merge pull request #156 from microsoft/Development
+[33m72ab424[m Dramatic improvement to document search
+[33m180960b[m Update docker_image_publish.yml
+[33m9482b27[m Updating Dockerfile for successful build
+[33m4d3f9ae[m Create docker_image_publish.yml
+[33m5c0c646[m Merge pull request #147 from microsoft/Development
+[33m976f0f3[m Updated doc with (v0.212.78) term
+[33m11055bb[m Merge pull request #146 from microsoft/Development
+[33mf8d531f[m Bug creating too many search returns
+[33m9c73762[m Merge pull request #145 from microsoft/Development
+[33mb6b4c01[m Update README.md
+[33m09bc199[m Merge pull request #144 from microsoft/Development
+[33m07fb08d[m Update  README with Audio Extraction
+[33mdb476c5[m Merge pull request #143 from microsoft/Development
+[33m6326117[m Update README with User Feedback
+[33m4e3cc0e[m Merge pull request #142 from microsoft/Development
+[33m99d3954[m Update README
+[33maead8bc[m Merge pull request #141 from microsoft/Development
+[33m3df1678[m Update README
+[33mb434906[m Merge pull request #140 from microsoft/Development
+[33m807f203[m Update README.md
+[33mf0eadf1[m Merge pull request #139 from microsoft/Development
+[33m3d3bbc7[m Update README.md
+[33m3e3e7bd[m Merge pull request #138 from microsoft/Development
+[33m315ba39[m Update README.md
+[33mafc2733[m Merge pull request #137 from microsoft/Development
+[33m439a70d[m Update logo.png
+[33m86fee58[m Merge pull request #136 from microsoft/Development
+[33m3e12409[m Update README.md
+[33m4474d6a[m Merge pull request #135 from microsoft/Development - Updated README for v0.212.078
+[33meedd4bc[m Updated README and RELEASE_NOTES
+[33m33118ff[m Updated multi-model language in admin settings and added pngs
+[33m89bacd7[m Merge pull request #131 from microsoft/Development
+[33mdb2feb3[m Update application/single_app/config.py
+[33ma7baa64[m Merge pull request #130 from microsoft/process-video
+[33m98bef28[m Update openapi.yaml
+[33m7ba43a8[m Update index fields, support longer videos, support audio files, support apim models
+[33m6a242c1[m Merge pull request #129 from microsoft/process-video
+[33m8a6a2da[m user selected model
+[33m2f908fd[m User selected models, video index settings in admin settings
+[33mef4fa22[m increased size
+[33mc6e9541[m Adding video processing
+[33m1b40cd1[m Supports uploading and processing video
+[33m055ae2f[m Merge pull request #126 from microsoft/group-prompts
+[33m96d8771[m Added prompts to groups
+[33m21ac2f7[m Merge pull request #125 from microsoft/user-search-fail
+[33md8ee627[m Fix user search authentication & enable Enter‑to‑search in “Add Member” modal
+[33m8b4d4ac[m Merge pull request #124 from microsoft/main
+[33m33a6b2a[m Delete .DS_Store
+[33m3810059[m Delete .DS_Store
+[33mfe58a9f[m Update .gitignore
+[33m3ce5502[m Merge pull request #123 from microsoft/Right-pane-title-update-on-left-pane-title-change
+[33m1a5fff4[m bug fix: update right pane title, group workspace legacy docs
+[33m7715ff7[m Merge pull request #122 from microsoft/Upgrade-legacy-docs
+[33m4a2867e[m BUG: Error uploading file: loadConversations is not defined, when uploading file to chat but file does correctly upload.
+[33md2b1705[m fixed BUG: Error uploading file: loadConversations is not defined, when uploading file to chat but file does correctly upload.
+[33m64dacd0[m Added support to upgrade legacy documents meta data in  cosmos to current format
+[33m77da50e[m Merge pull request #117 from microsoft/Enhanced-citations
+[33m8400500[m Update openapi.yaml
+[33m432b964[m Update fields for connection strings
+[33m01f9506[m Resolved citation not showing up bug
+[33m4ba3c8e[m Consolidated apis for workspaces
+[33md783195[m fixed failed to find group bug and unicode documents bug
+[33m97dcd5b[m Fixed file content upload bug
+[33m07a5366[m fixed prompt bug
+[33mc4c5485[m Resolved prompt not sending content bug
+[33m75829cc[m fixed logo bug, logo shows immediately when updated
+[33m3818c4a[m Persistent logo, resizes image h:100, saves base64 to cosmos
+[33m266f57e[m create new convo when no convo selected
+[33me06eed3[m Corrected bug causing delayed chat response
+[33m9bc9e85[m Updated admin settings verbiage on roles
+[33me7a244c[m fixed feedback bug and workspace bug
+[33m5ce4026[m added pagination
+[33mfe062cf[m Added version check
+[33m29c445a[m Merge pull request #100 from paullizer/patch-1
+[33md2fcabc[m Create .deployment
+[33m778235d[m Updated RAG logic to improve file support and document RAG logic
+[33m8f77dd6[m added improved pptx and ppt support, improved citation, moved js to repo
+[33m0150151[m Added feedback and safety violation admin and create group role
+[33me2aa77c[m moved workspace js to files, fixed upload bug, fixed active group bug
+[33mf1516fd[m fixed bug when submitting message
+[33m45da4c0[m Improved chat UI, threaded metadata extract, workspace ui
+[33m116d10c[m + doc classification, view in convo, + meta data, folder structure
+[33ma239522[m Document classification, view pdf with enhanced citation, better citation parse
+[33mfcfdc2d[m PDF: Bulk uploads, improve chunking, enhanced metadata
+[33m712edfb[m updating front end with progress
+[33m19a2848[m Adding background processing of uploaded files
+[33m4792818[m Starting to add support for Enhanced citations
+[33m21b86fa[m Adding admin settings
+[33me0c4d74[m Merge pull request #81 from microsoft/refactor-conversation-storage
+[33m3761896[m moved messages to own container, improved image presentation
+[33m24e360e[m Merge pull request #80 from microsoft/main
+[33md9a2196[m Merge pull request #79 from paullizer/Development
+[33m9963695[m updated docs to workspace
+[33mb69cf02[m Merge pull request #78 from paullizer/Development
+[33m89212b4[m Updated docs to workspace
+[33m8269788[m Merge pull request #72 from microsoft/Development
+[33m9d825de[m Big README update
+[33m5add60b[m Updated Documents page into full on Workspaces, added prompts
+[33m0137cd6[m Merge pull request #69 from microsoft/Development
+[33md43e55c[m Update RELEASE_NOTES.md
+[33md6651eb[m Update README.md
+[33m8deb664[m Merge pull request #68 from microsoft/Development
+[33m7825d27[m Improved hybrid search and README
+[33ma8784d3[m Merge pull request #56 from microsoft/Development
+[33m2b24b69[m resolved RAG bug
+[33m0f4c341[m Merge pull request #51 from microsoft/Development
+[33m8158ea7[m Updated README
+[33me22d099[m Updated README
+[33maedbaa2[m Bug fix for test connections, manage groups, and images
+[33m2298bd2[m Updated ENV examples
+[33m9dd5c92[m Updated Settings UI, added APIM, added test connection
+[33m9b7580a[m Added deployment details
+[33m90f5358[m v0.201.5
+[33m2fc2952[m Update route_backend_chats.py
+[33mcf601eb[m Updated architecture
+[33mb275f77[m Added release notes for v201.5
+[33m7b6b15d[m Updated env examples
+[33m5797e18[m Manage group bug fix, clean up settings in code, and arch diagram
+[33mfa684ad[m Added ability to enable archive conversation instead of delete
+[33m88304aa[m Merge pull request #46 from microsoft/Development
+[33mfa2e5fe[m Added Release Notes for v0.199.3
+[33me64ac3b[m Improved UI and reduced which settings are sent to the front end
+[33m0cbff37[m Added feedback to chat and user feedback and safety views
+[33m65a947d[m Enter message to start new conversation
+[33md510c42[m Merge pull request #44 from microsoft/Development
+[33m60199d6[m Updated README and RELEASE_NOTES
+[33m797b9ea[m Added content safety response and violation management
+[33m190e55c[m Moved ai search and doc intel to admin settings
+[33m25bd744[m Updated comments
+[33m54c9a7f[m Merge pull request #42 from microsoft/Development
+[33mef3f54b[m Update README.md
+[33mee7e312[m Merge pull request #41 from microsoft/main
+[33m8eac20c[m Merge pull request #40 from microsoft/Development
+[33mb9fee82[m Merge pull request #39 from microsoft/main
+[33m25c40d6[m Moved admin settings javascript and resolved bug in apim logic
+[33mcde7c34[m Merge pull request #36 from danimal521/main
+[33meeb452f[m Fix indentation in embedding model selection logic
+[33md6fd20a[m Refactor model selection logic
+[33mb13b854[m Add new API management settings
+[33mc799e9c[m Remove dotenv load from config.py
+[33m3f3ea7f[m apim support
+[33m402f825[m apimgpt
+[33mb888219[m Update README.md
+[33madf8131[m Update README.md
+[33mc283df6[m AOAI and Bing now configured in admin settings
+[33m8e65108[m Added image model in chat
+[33m4159a23[m Update README.md
+[33mb113615[m Update README.md
+[33m9e2dfd0[m Update README.md
+[33mcb61ffc[m Added per message model tracking
+[33m12998f7[m RBAC with admin, simplified gpt, embedding, and image endpoint testing
+[33m9edd749[m Update config.py
+[33m8c09637[m resolved RateLimitError
+[33mf7e4003[m Admin Setting UI, landing page text, AUP example
+[33mb541dbe[m Group management, Group documents, and User settings
+[33me344367[m Added search a specific document
+[33m21208ac[m Updates to image, admin settings, and chat.
+[33mda427e2[m Merge pull request #16 from pnashmsft/main
+[33m9c6ca62[m Merge pull request #6 from pnashmsft/petedev
+[33m709a833[m Update message input to use textarea and enhance send functionality to support multiple lines of text.
+[33m33b1c07[m Refactor LLM query functions to accept model parameter and update response formatting
+[33m4f0206f[m Add Bing Search integration and related configuration settings
+[33me695b05[m Merge pull request #3 from pnashmsft/petedev
+[33m9d1ec5f[m updated with support for image generation
+[33ma3a0399[m updated .gitignore
+[33mef9edbc[m initial commit in new repo
+[33mf7d0c14[m Updated UI
+[33me29390c[m Updated embedding function
+[33m8778c73[m Update README.md
+[33m65667a6[m Updated app architecture
+[33m3cfae79[m moved app to application folder
+[33m91903e1[m updated app architecture
+[33m2dda3ab[m Update requirements.txt
+[33m85c8a96[m Updated Readme with demos and new screenshots
+[33md29480b[m improved message area user experience
+[33mebe84b6[m Update app.py
+[33me6b8c36[m fixed bug on updating and deleting conversation documents
+[33m69e9416[m Merge branch 'main' of https://github.com/microsoft/simplechat
+[33md370e99[m improved ui for doc search
+[33me4450f0[m Merge pull request #1 from microsoft/users/GitHubPolicyService/2cc940ab-47ee-463a-bf6f-4dc5332062f5
+[33mea8aaf1[m Initial
+[33m633efef[m Microsoft mandatory file
+[33m6273fd8[m Initial commit
