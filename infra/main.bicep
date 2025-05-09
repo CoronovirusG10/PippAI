@@ -114,7 +114,11 @@ resource aoai 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
 
 // model deployments
 var models = [
-  { name: 'gpt4o', sku: 'gpt-4o' }, { name: 'gpt41', sku: 'gpt-4.1' }, { name: 'o3-mini', sku: 'o3-mini' }, { name: 'dalle3', sku: 'dalle3' }, { name: 'whisper', sku: 'whisper' }
+  { name: 'gpt4o',  sku: 'gpt-4o' }
+  { name: 'gpt41',  sku: 'gpt-4.1' }
+  { name: 'o3-mini', sku: 'o3-mini' }
+  { name: 'dalle3', sku: 'dalle3' }
+  { name: 'whisper', sku: 'whisper' }
 ]
 
 resource deployments 'Microsoft.CognitiveServices/accounts/deployments@2023-10-01' = [for m in models: {
@@ -182,9 +186,9 @@ resource web 'Microsoft.Web/sites@2023-01-01' = {
         { name: 'AOAI_MODEL_DALLE_DEPLOYMENT',   value: 'dalle3' },
         { name: 'AOAI_MODEL_WHISPER_DEPLOYMENT', value: 'whisper' },
         { name: 'AZUREAI_SEARCH_ENDPOINT',       value: 'https://${search.name}.search.windows.net' },
-        { name: 'AZUREAI_SEARCH_KEY',            value: listAdminKeys(search.id, '2023-11-01').primaryKey },
-        { name: 'COSMOS_CONNECTION_STRING',      value: listKeys(cosmos.id, '2023-04-15').primaryMasterKey },
-        { name: 'STORAGE_CONNECTION_STRING',     value: listKeys(sa.id, '2023-01-01').keys[0].value }
+        { name: 'AZUREAI_SEARCH_KEY',            value: search.listAdminKeys().primaryKey },
+        { name: 'COSMOS_CONNECTION_STRING',      value: cosmos.listKeys().primaryMasterKey },
+        { name: 'STORAGE_CONNECTION_STRING',     value: sa.listKeys().keys[0].value }
       ]
     }
   }
