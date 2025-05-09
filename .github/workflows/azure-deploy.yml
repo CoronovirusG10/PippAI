@@ -21,14 +21,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: ‘Login to Azure with OIDC’
+      - name: Login to Azure with OIDC
         uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - name: ‘Deploy Bicep’
+      - name: Deploy Bicep
         uses: azure/arm-deploy@v2
         with:
           region: westeurope
@@ -37,7 +37,7 @@ jobs:
           template: infra/main.bicep
           deploymentName: pippa-chatapp
 
-      - name: ‘Swap slot after health-check’
+      - name: Swap slot after health-check
         run: |
           az webapp deployment slot swap \
             --resource-group pippaoflondon-rg \
