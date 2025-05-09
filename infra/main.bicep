@@ -109,14 +109,6 @@ resource aoai 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
   sku: { name: 'S0' }
   properties: {
     customSubDomainName: openAIName
-    encryption: {
-      keySource: 'Microsoft.Keyvault'
-      keyVaultProperties: {
-        keyName: 'myKey'
-        keyVersion: '1'
-        keyVaultUri: 'https://myvault.vault.azure.net/'
-      }
-    }
   }
 }
 
@@ -223,6 +215,5 @@ resource bot 'Microsoft.BotService/botServices@2023-05-15' = {
     displayName: 'Pippa Teams Bot'
     msaAppId: reference(web.id, '2023-01-01', 'Full').identity.principalId
     endpoint: 'https://${webAppName}.azurewebsites.net/api/messages'
-    developerAppInsightKey: reference(web.id, '2023-01-01', 'Full').properties.siteConfig.appSettings[?name=='APPINSIGHTS_INSTRUMENTATIONKEY'].value
   }
 }
