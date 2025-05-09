@@ -42,4 +42,5 @@ jobs:
           az webapp deployment slot swap \
             --resource-group pippaoflondon-rg \
             --name pippaoflondonai \
-            --slot staging
+            --slot staging \
+            --target-slot production
