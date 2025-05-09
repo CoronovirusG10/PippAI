@@ -114,10 +114,10 @@ resource aoai 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
 
 // model deployments
 var models = [
-  { name: 'gpt4o',  sku: 'gpt-4o' }
-  { name: 'gpt41',  sku: 'gpt-4.1' }
-  { name: 'o3-mini', sku: 'o3-mini' }
-  { name: 'dalle3', sku: 'dalle3' }
+  { name: 'gpt4o',  sku: 'gpt-4o' },
+  { name: 'gpt41',  sku: 'gpt-4.1' },
+  { name: 'o3-mini', sku: 'o3-mini' },
+  { name: 'dalle3', sku: 'dalle3' },
   { name: 'whisper', sku: 'whisper' }
 ]
 
