@@ -21,13 +21,6 @@ var keyVaultName             = 'pippaoflondon-kv'
 var botName                  = 'pippaoflondon-bot'
 
 // --------------------------------------------------
-//  Resource group scoped deployment (subscription-level)
-// --------------------------------------------------
-resource rg 'Microsoft.Resources/resourceGroups@2022-09-01' existing = {
-  name: resourceGroupName
-}
-
-// --------------------------------------------------
 //  Key Vault for runtime secrets
 // --------------------------------------------------
 resource kv 'Microsoft.KeyVault/vaults@2023-02-01' = {

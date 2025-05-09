@@ -33,7 +33,8 @@ jobs:
         with:
           region: westeurope
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          scope: subscription
+          scope: resourcegroup
+          resourceGroupName: pippaoflondon-rg
           template: infra/main.bicep
           deploymentName: pippa-chatapp
 
