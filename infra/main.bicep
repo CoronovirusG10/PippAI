@@ -182,9 +182,9 @@ resource web 'Microsoft.Web/sites@2023-01-01' = {
         { name: 'AOAI_MODEL_DALLE_DEPLOYMENT',   value: 'dalle3' },
         { name: 'AOAI_MODEL_WHISPER_DEPLOYMENT', value: 'whisper' },
         { name: 'AZUREAI_SEARCH_ENDPOINT',       value: 'https://${search.name}.search.windows.net' },
-        { name: 'AZUREAI_SEARCH_KEY',            value: search.listAdminKeys().primaryKey },
-        { name: 'COSMOS_CONNECTION_STRING',      value: cosmos.listKeys().primaryMasterKey },
-        { name: 'STORAGE_CONNECTION_STRING',     value: sa.listKeys().keys[0].value }
+        { name: 'AZUREAI_SEARCH_KEY',            value: listAdminKeys(search.id, '2023-11-01').primaryKey },
+        { name: 'COSMOS_CONNECTION_STRING',      value: listKeys(cosmos.id, '2023-04-15').primaryMasterKey },
+        { name: 'STORAGE_CONNECTION_STRING',     value: listKeys(sa.id, '2023-01-01').keys[0].value }
       ]
     }
   }
