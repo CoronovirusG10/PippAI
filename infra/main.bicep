@@ -114,11 +114,7 @@ resource aoai 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
 
 // model deployments
 var models = [
-  { name: 'gpt4o', sku: 'gpt-4o' },
-  { name: 'gpt41', sku: 'gpt-4.1' },
-  { name: 'o3-mini', sku: 'o3-mini' },
-  { name: 'dalle3', sku: 'dalle3' },
-  { name: 'whisper', sku: 'whisper' }
+  { name: 'gpt4o', sku: 'gpt-4o' }, { name: 'gpt41', sku: 'gpt-4.1' }, { name: 'o3-mini', sku: 'o3-mini' }, { name: 'dalle3', sku: 'dalle3' }, { name: 'whisper', sku: 'whisper' }
 ]
 
 resource deployments 'Microsoft.CognitiveServices/accounts/deployments@2023-10-01' = [for m in models: {
@@ -179,16 +175,16 @@ resource web 'Microsoft.Web/sites@2023-01-01' = {
     siteConfig: {
       linuxFxVersion: 'PYTHON|3.11'
       appSettings: [
-        { name: 'AZURE_OPENAI_ENDPOINT', value: aoai.properties.endpoint }
-        { name: 'AOAI_MODEL_GPT4O_DEPLOYMENT', value: 'gpt4o' }
-        { name: 'AOAI_MODEL_GPT41_DEPLOYMENT', value: 'gpt41' }
-        { name: 'AOAI_MODEL_O3MINI_DEPLOYMENT', value: 'o3-mini' }
-        { name: 'AOAI_MODEL_DALLE_DEPLOYMENT', value: 'dalle3' }
-        { name: 'AOAI_MODEL_WHISPER_DEPLOYMENT', value: 'whisper' }
-        { name: 'AZUREAI_SEARCH_ENDPOINT', value: 'https://${search.name}.search.windows.net' }
-        { name: 'AZUREAI_SEARCH_KEY', value: search.listAdminKeys().primaryKey }
-        { name: 'COSMOS_CONNECTION_STRING', value: cosmos.listKeys().primaryMasterKey }
-        { name: 'STORAGE_CONNECTION_STRING', value: sa.listKeys().keys[0].value }
+        { name: 'AZURE_OPENAI_ENDPOINT',         value: aoai.properties.endpoint },
+        { name: 'AOAI_MODEL_GPT4O_DEPLOYMENT',   value: 'gpt4o' },
+        { name: 'AOAI_MODEL_GPT41_DEPLOYMENT',   value: 'gpt41' },
+        { name: 'AOAI_MODEL_O3MINI_DEPLOYMENT',  value: 'o3-mini' },
+        { name: 'AOAI_MODEL_DALLE_DEPLOYMENT',   value: 'dalle3' },
+        { name: 'AOAI_MODEL_WHISPER_DEPLOYMENT', value: 'whisper' },
+        { name: 'AZUREAI_SEARCH_ENDPOINT',       value: 'https://${search.name}.search.windows.net' },
+        { name: 'AZUREAI_SEARCH_KEY',            value: search.listAdminKeys().primaryKey },
+        { name: 'COSMOS_CONNECTION_STRING',      value: cosmos.listKeys().primaryMasterKey },
+        { name: 'STORAGE_CONNECTION_STRING',     value: sa.listKeys().keys[0].value }
       ]
     }
   }
@@ -213,7 +209,7 @@ resource bot 'Microsoft.BotService/botServices@2023-05-15' = {
   sku: { name: 'F0' }
   properties: {
     displayName: 'Pippa Teams Bot'
-    msaAppId: reference(web.id, '2023-01-01', 'Full').identity.principalId
+    msaAppId: web.identity.principalId
     endpoint: 'https://${webAppName}.azurewebsites.net/api/messages'
   }
 }
