@@ -113,9 +113,9 @@ resource aoai 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
   }
 }
 
-// model deployments
+// Updated the gpt4o model to include version
 var models = [
-  { name: 'gpt4o',  sku: 'gpt-4o' }
+  { name: 'gpt4o',  sku: 'gpt-4o', version: '2024-11-20' }
   { name: 'gpt41',  sku: 'gpt-4.1' }
   { name: 'o3-mini', sku: 'o3-mini' }
   { name: 'dalle3', sku: 'dalle3' }
@@ -129,7 +129,7 @@ resource deployments 'Microsoft.CognitiveServices/accounts/deployments@2023-10-0
     model: {
       format: 'OpenAI'
       name: m.sku
-      version: 'latest'
+      version: m.version ?? 'latest' // Default to 'latest' if version is not specified
     }
     scaleSettings: {
       scaleType: 'Standard'
