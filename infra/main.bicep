@@ -201,5 +201,9 @@ resource bot 'Microsoft.BotService/botServices@2023-09-15-preview' = {
     displayName: 'Pippa Teams Bot'
     msaAppId: web.identity.principalId
     endpoint: 'https://${webAppName}.azurewebsites.net/api/messages'
+    runtimeVersion: 'v4'
+    ownerIds: [
+      web.identity.principalId
+    ]
   }
 }
