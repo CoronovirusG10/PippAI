@@ -113,10 +113,9 @@ resource aoai 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
   }
 }
 
-// Updated models array to align versions and removed Whisper
+// Removed GPT-4.1 from models array
 var models = [
   { name: 'gpt4o',  sku: 'gpt-4o',   version: '2024-11-20' }
-  { name: 'gpt41',  sku: 'gpt-4.1',  version: '2025-04-14' }
   { name: 'o3-mini', sku: 'o3-mini', version: '2025-01-31' }
   { name: 'dalle3',  sku: 'dall-e-3', version: '3.0' }
 ]
@@ -170,7 +169,6 @@ resource web 'Microsoft.Web/sites@2023-01-01' = {
       appSettings: [
         { name: 'AZURE_OPENAI_ENDPOINT',         value: aoai.properties.endpoint }
         { name: 'AOAI_MODEL_GPT4O_DEPLOYMENT',   value: 'gpt4o' }
-        { name: 'AOAI_MODEL_GPT41_DEPLOYMENT',   value: 'gpt41' }
         { name: 'AOAI_MODEL_O3MINI_DEPLOYMENT',  value: 'o3-mini' }
         { name: 'AOAI_MODEL_DALLE_DEPLOYMENT',   value: 'dalle3' }
         { name: 'AZUREAI_SEARCH_ENDPOINT',       value: 'https://${search.name}.search.windows.net' }
