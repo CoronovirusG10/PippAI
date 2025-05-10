@@ -17,7 +17,6 @@ var cosmosAccountName        = 'pippaoflondon-cosmos'
 var searchServiceName        = 'pippaoflondon-search'
 var speechName               = 'pippaoflondonspeech001'
 var openAIName               = 'pippaai-sc'
-var docIntName               = 'pippaoflondondocint001'
 var keyVaultName             = 'pippaoflondon-kv'
 var botName                  = 'pippaoflondon-bot'
 
@@ -138,15 +137,6 @@ resource deployments 'Microsoft.CognitiveServices/accounts/deployments@2023-10-0
   }
 }]
 
-// --------------------------------------------------
-//  Document Intelligence
-// --------------------------------------------------
-resource docInt 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
-  name: docIntName
-  location: location
-  kind: 'DocumentIntelligence'
-  sku: { name: 'S0' }
-}
 
 // --------------------------------------------------
 //  App Service Plan (B3 or P1v3)
