@@ -113,16 +113,15 @@ resource aoai 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
   }
 }
 
-// Updated the gpt4o model to include version
+// Updated models array to align versions and removed Whisper
 var models = [
-  { name: 'gpt4o',  sku: 'gpt-4o', version: '2024-11-20' }
-  { name: 'gpt41',  sku: 'gpt-4.1', version: '2024-02-15' }
-  { name: 'o3-mini', sku: 'o3-mini' }
-  { name: 'dalle3', sku: 'dalle3' }
-  { name: 'whisper', sku: 'whisper' }
+  { name: 'gpt4o',  sku: 'gpt-4o',   version: '2024-11-20' }
+  { name: 'gpt41',  sku: 'gpt-4.1',  version: '2025-04-14' }
+  { name: 'o3-mini', sku: 'o3-mini', version: '2025-01-31' }
+  { name: 'dalle3',  sku: 'dall-e-3', version: '3.0' }
 ]
 
-resource deployments 'Microsoft.CognitiveServices/accounts/deployments@2023-10-01' = [for m in models: {
+resource deployments 'Microsoft.CognitiveServices/accounts/deployments@2023-10-01' = [for m in models: if (m.name != 'whisper') {
   parent: aoai
   name: m.name
   properties: {
@@ -174,7 +173,6 @@ resource web 'Microsoft.Web/sites@2023-01-01' = {
         { name: 'AOAI_MODEL_GPT41_DEPLOYMENT',   value: 'gpt41' }
         { name: 'AOAI_MODEL_O3MINI_DEPLOYMENT',  value: 'o3-mini' }
         { name: 'AOAI_MODEL_DALLE_DEPLOYMENT',   value: 'dalle3' }
-        { name: 'AOAI_MODEL_WHISPER_DEPLOYMENT', value: 'whisper' }
         { name: 'AZUREAI_SEARCH_ENDPOINT',       value: 'https://${search.name}.search.windows.net' }
         { name: 'AZUREAI_SEARCH_KEY',            value: search.listAdminKeys().primaryKey }
         { name: 'COSMOS_CONNECTION_STRING',      value: cosmos.listKeys().primaryMasterKey }
