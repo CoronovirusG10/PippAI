@@ -19,7 +19,6 @@ var searchServiceName        = 'pippaoflondon-search'
 var speechName               = 'pippaoflondonspeech001'
 var openAIName               = 'pippaai-sc'
 var keyVaultName             = 'pippaoflondon-kv2'
-var botName                  = 'pippaoflondon-bot'
 
 // --------------------------------------------------
 //  Key Vault for runtime secrets
@@ -187,25 +186,5 @@ resource slot 'Microsoft.Web/sites/slots@2023-01-01' = {
   location: location
   properties: {
     serverFarmId: plan.id
-  }
-}
-
-// --------------------------------------------------
-//  Bot Channels Registration (for Teams)
-// --------------------------------------------------
-resource bot 'Microsoft.BotService/botServices@2022-09-15' = {
-  name: botName
-  location: 'global'
-  sku: { name: 'F0' }
-
-  runtimeVersion: 'V4'
-  ownerIds: [
-    web.identity.principalId
-  ]
-
-  properties: {
-    displayName: 'Pippa Teams Bot'
-    msaAppId: web.identity.principalId
-    endpoint: 'https://${webAppName}.azurewebsites.net/api/messages'
   }
 }
