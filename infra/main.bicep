@@ -131,9 +131,7 @@ resource deployments 'Microsoft.CognitiveServices/accounts/deployments@2023-10-0
       name: m.sku
       version: m.version ?? 'latest' // Default to 'latest' if version is not specified
     }
-    scaleSettings: {
-      scaleType: 'Standard'
-    }
+    // sku: { name: 'standard' }
   }
 }]
 
