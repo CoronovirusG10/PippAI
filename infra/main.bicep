@@ -121,7 +121,7 @@ var models = [
   { name: 'dalle3',  sku: 'dall-e-3', version: '3.0' }
 ]
 
-resource deployments 'Microsoft.CognitiveServices/accounts/deployments@2023-10-01' = [for m in models: if (m.name != 'whisper') {
+resource deployments 'Microsoft.CognitiveServices/accounts/deployments@2023-10-01' = [for m in models: {
   parent: aoai
   name: m.name
   properties: {
@@ -130,7 +130,7 @@ resource deployments 'Microsoft.CognitiveServices/accounts/deployments@2023-10-0
       name: m.sku
       version: m.version ?? 'latest' // Default to 'latest' if version is not specified
     }
-    // sku: { name: 'standard' }
+    // Removed explicit sku block
   }
 }]
 
