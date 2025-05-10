@@ -128,7 +128,9 @@ resource deployments 'Microsoft.CognitiveServices/accounts/deployments@2023-10-0
       name: m.sku
       version: m.version ?? 'latest' // Default to 'latest' if version is not specified
     }
-    // Removed explicit sku block
+    sku: {
+      name: 'Standard'
+    }
   }
 }]
 
