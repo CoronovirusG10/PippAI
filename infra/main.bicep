@@ -124,6 +124,7 @@ resource deployments 'Microsoft.CognitiveServices/accounts/deployments@2023-10-0
   name: m.name
   sku: {
     name: 'Standard'
+    capacity: 1
   }
   properties: {
     model: {
