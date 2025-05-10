@@ -17,7 +17,7 @@ var cosmosAccountName        = 'pippaoflondon-cosmos'
 var searchServiceName        = 'pippaoflondon-search'
 var speechName               = 'pippaoflondonspeech001'
 var openAIName               = 'pippaai-sc'
-var docIntName               = 'pippaoflondon-docint'
+var docIntName               = 'pippaoflondondocint001'
 var keyVaultName             = 'pippaoflondon-kv'
 var botName                  = 'pippaoflondon-bot'
 
