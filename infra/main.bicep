@@ -193,15 +193,15 @@ resource slot 'Microsoft.Web/sites/slots@2023-01-01' = {
 // --------------------------------------------------
 //  Bot Channels Registration (for Teams)
 // --------------------------------------------------
-resource bot 'Microsoft.BotService/botServices@2023-09-15-preview' = {
+resource bot 'Microsoft.BotService/botServices@2022-09-15' = {
   name: botName
   location: 'global'
   sku: { name: 'F0' }
-  runtimeVersion: 'v4'
-  ownerIds: [
-    web.identity.principalId
-  ]
   properties: {
+    runtimeVersion: 'V4'
+    ownerIds: [
+      web.identity.principalId
+    ]
     displayName: 'Pippa Teams Bot'
     msaAppId: web.identity.principalId
     endpoint: 'https://${webAppName}.azurewebsites.net/api/messages'
