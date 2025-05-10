@@ -132,7 +132,7 @@ resource deployments 'Microsoft.CognitiveServices/accounts/deployments@2023-10-0
       version: 'latest'
     }
     scaleSettings: {
-      type: 'Standard'
+      scaleType: 'Standard'
     }
   }
 }]
