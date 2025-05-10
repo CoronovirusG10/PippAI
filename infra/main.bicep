@@ -116,7 +116,7 @@ resource aoai 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
 // Updated the gpt4o model to include version
 var models = [
   { name: 'gpt4o',  sku: 'gpt-4o', version: '2024-11-20' }
-  { name: 'gpt41',  sku: 'gpt-4.1' }
+  { name: 'gpt41',  sku: 'gpt-4.1', version: '2024-02-15' }
   { name: 'o3-mini', sku: 'o3-mini' }
   { name: 'dalle3', sku: 'dalle3' }
   { name: 'whisper', sku: 'whisper' }
