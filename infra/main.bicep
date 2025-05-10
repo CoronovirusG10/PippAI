@@ -6,8 +6,9 @@ param location string = 'swedencentral'
 @allowed([
   'B3'
   'P1v3'
+  'P2v3'
 ])
-param appServiceSku string = 'B3'
+param appServiceSku string = 'P2v3'
 
 @description('Global names – do not change after first deploy')
 var appServicePlanName       = 'pippaoflondon-plan'
@@ -118,7 +119,7 @@ var models = [
   { name: 'gpt4o',  sku: 'gpt-4o',   version: '2024-11-20' }
 ]
 
-resource deployments 'Microsoft.CognitiveServices/accounts/deployments@2023-10-01' = [for m in models: {
+resource deployments 'Microsoft.CognitiveServices/accounts/deployments@2023-10-01-preview' = [for m in models: {
   parent: aoai
   name: m.name
   properties: {
@@ -189,7 +190,7 @@ resource slot 'Microsoft.Web/sites/slots@2023-01-01' = {
 // --------------------------------------------------
 //  Bot Channels Registration (for Teams)
 // --------------------------------------------------
-resource bot 'Microsoft.BotService/botServices@2023-05-15' = {
+resource bot 'Microsoft.BotService/botServices@2023-09-15' = {
   name: botName
   location: 'global'
   sku: { name: 'F0' }
