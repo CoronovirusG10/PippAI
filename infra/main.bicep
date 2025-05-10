@@ -122,14 +122,14 @@ var models = [
 resource deployments 'Microsoft.CognitiveServices/accounts/deployments@2023-10-01-preview' = [for m in models: {
   parent: aoai
   name: m.name
+  sku: {
+    name: 'Standard'
+  }
   properties: {
     model: {
       format: 'OpenAI'
       name: m.sku
       version: m.version ?? 'latest' // Default to 'latest' if version is not specified
-    }
-    sku: {
-      name: 'Standard'
     }
   }
 }]
