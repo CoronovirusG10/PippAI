@@ -18,7 +18,7 @@ var cosmosAccountName        = 'pippaoflondon-cosmos'
 var searchServiceName        = 'pippaoflondon-search'
 var speechName               = 'pippaoflondonspeech001'
 var openAIName               = 'pippaai-sc'
-var keyVaultName             = 'pippaoflondon-kv'
+var keyVaultName             = 'pippaoflondon-kv2'
 var botName                  = 'pippaoflondon-bot'
 
 // --------------------------------------------------
@@ -190,7 +190,7 @@ resource slot 'Microsoft.Web/sites/slots@2023-01-01' = {
 // --------------------------------------------------
 //  Bot Channels Registration (for Teams)
 // --------------------------------------------------
-resource bot 'Microsoft.BotService/botServices@2023-09-15' = {
+resource bot 'Microsoft.BotService/botServices@2023-09-15-preview' = {
   name: botName
   location: 'global'
   sku: { name: 'F0' }
